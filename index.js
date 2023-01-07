@@ -23,9 +23,6 @@ app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-db.get(6752).then(r => {
-  console.log(r)
-})
 
 // Your first API endpoint
 app.post('/api/shorturl', function(req, res) {
@@ -55,7 +52,6 @@ app.get("/api/shorturl/*", (req, res) => {
   let parsedShortURL = req.url.split('/')[3].toString().split('?')[0]
   console.log(parsedShortURL)
   db.get(parsedShortURL).then(r => {
-    console.log(r)
     res.redirect(r)
   })
 })
